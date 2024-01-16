@@ -1,0 +1,21 @@
+.main-container{
+    width: 100%;
+}
+/* Title */
+.container-flex{
+    display: flex;
+}
+.title-container{
+    margin-left: 0px;
+    font-weight: 700;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 25px;
+}
+.title-container img{
+    width: 55px;
+}
+/* .title-container{
+    display: inline-block;
+    margin-right: auto;
+} */

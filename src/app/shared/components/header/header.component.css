@@ -1,0 +1,10 @@
+.header-icon{
+    height: 40px;
+    /* background-color: rgb(39, 39, 39); */
+    margin-left: 30px;
+}
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    min-width: 480px;
+}
