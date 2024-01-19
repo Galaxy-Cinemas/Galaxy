@@ -1,5 +1,6 @@
 .header-icon{
     height: 40px;
+    justify-content: space-between;
     /* background-color: rgb(39, 39, 39); */
     margin-left: 30px;
 }
@@ -7,4 +8,8 @@
     display: flex;
     justify-content: space-between;
     min-width: 480px;
+}
+.header-link{
+    color: rgb(207, 148, 38);
+    justify-content: right;
 }
