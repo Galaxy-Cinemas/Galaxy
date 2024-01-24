@@ -1,15 +1,78 @@
-.header-icon{
-    height: 40px;
-    justify-content: space-between;
-    /* background-color: rgb(39, 39, 39); */
-    margin-left: 30px;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
 }
-.custom-header{
+
+.header{
+    /* background-color: #1f1c1c; */
+    background: #141E30; 
+background: -webkit-linear-gradient(to left, #243B55, #141E30); 
+background: linear-gradient(to left, #243B55, #141E30); 
+
+
+
     display: flex;
     justify-content: space-between;
-    min-width: 480px;
+    align-items: center;
+    height: 60px;
+    padding: 2px 5%;
 }
-.header-link{
-    color: rgb(207, 148, 38);
-    justify-content: right;
+
+.header .logo{
+    cursor: pointer;
 }
+
+.header .logo img{
+    height: 45px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover{
+    transform: scale(1.05);
+}
+
+.header .nav-links{
+    list-style: none;
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.05);
+}
+
+.header .nav-links a{
+    font-size: 550;
+    color: #eceff1;
+    text-decoration: none;
+}
+
+.header .nav-links li a:hover{
+    color: #ffbc0e;
+}
+
+.header .btn button{
+    font-weight: 500;
+    color: #ffbc0e;
+    padding: 5px 10px;
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    background-color: #ffbc0e;
+    color: #eceff1;
+    transform: scale(1.05);
+}
+

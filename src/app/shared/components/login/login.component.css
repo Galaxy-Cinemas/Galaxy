@@ -43,27 +43,28 @@ body {
 #login {
     width: 100%;
     padding: 50px 30px;
-    /* background-color: #3282b8; */
 
-    background: #141E30;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ffbc0e; */
 
-/* background: rgba( 255, 255, 255, 0.25 ); */
-box-shadow: 0 8px 32px 0 rgba(252, 252, 252, 0.37);
+    background: #141E30;  
+background: -webkit-linear-gradient(to left, #243B55, #141E30);  
+background: linear-gradient(to left, #243B55, #141E30);
+border-radius: 10px;
+
+/* box-shadow: 0 8px 32px 0 rgba(252, 252, 252, 0.37);
 backdrop-filter: blur( 2px );
 -webkit-backdrop-filter: blur( 2px );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+border: 1px solid rgba( 255, 255, 255, 0.18 ); */
 
-    
-    /* -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px; */
+/* background: rgba( 255, 255, 255, 0.05 );
+backdrop-filter: blur( 0px );
+-webkit-backdrop-filter: blur( 0px );
+border-radius: 10px;
+border: 1.3px solid #ffbc0e; */
+
     
     box-sizing: border-box;
 }
@@ -71,7 +72,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 #login input {
     font-family: 'Overpass', sans-serif;
     font-size: 110%;
-    color: #1b262c;
+    color: #2c1b1b;
     
     display: block;
     width: 100%;
@@ -82,7 +83,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     
     box-sizing: border-box;
     
-    border: none;
+    /* border: none; */
+    border: 1px solid #ffbc0e;
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
