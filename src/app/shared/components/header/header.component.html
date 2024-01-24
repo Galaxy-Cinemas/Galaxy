@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-warning fixed-top bg-dark custom-header">
+<!-- <nav class="navbar navbar-expand-md navbar-warning fixed-top bg-dark custom-header">
     <a class="navbar-brand" [routerLink] = "['/']">
         <img src="assets\naranja.jpg" alt="Marvelk" class="header-icon"> 
     </a>
@@ -6,9 +6,37 @@
         <a class="header-link navbar-brand" [routerLink] = "['/']">
             Sign up
         </a>
-        <a class="header-link navbar-brand" [routerLink] = "['/']">
+        <a class="header-link navbar-brand" [routerLink] = "['/login']">
             Sign in
         </a>
     </div>
-</nav>
+</nav> -->
 
+<!-- <nav>
+
+    <ul class="nav-links">
+        <li><a [routerLink] = "['/']">Services</a></li>
+        <li><a [routerLink] = "['/']">Pronto</a></li>
+        <li><a [routerLink] = "['/']">Cartelera</a></li>
+    </ul>
+</nav> -->
+
+<header class="header">
+    <div class="logo">
+        <a [routerLink] = "['/']">
+            <img src="assets\naranja.jpg" alt="Logo de la marca">
+        </a>
+    </div>
+    <nav>
+       <ul class="nav-links">
+            <li><a [routerLink] = "['/']">Cartelera</a></li>
+            <li><a [routerLink] = "['/']">Pronto</a></li>
+            <li><a [routerLink] = "['/']">Preventa</a></li>
+            <li><a [routerLink] = "['/']">Teatro</a></li>
+       </ul>            
+    </nav>
+    <div class="btn">
+        <a [routerLink] = "['/login']"><button>Login</button></a>
+    </div>
+    
+</header>
