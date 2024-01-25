@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { movieListRoutingModule } from './movie-list-routing.module';
 
-
-
 @NgModule({
   declarations: [
     

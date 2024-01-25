@@ -8,15 +8,16 @@
             
         </div>
     </div>
-    <div class="container">
+    <div class="container"  *ngFor="let movie of (movies | async)">
         <div class="card">
                 <a [routerLink] = "['/movie-details']">
                     <div class="image">
-                        <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer">
+                        <!-- <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer"> -->
+                        <img src="{{movie.thumbnail.path}}.{{movie.thumbnail.extension}}" alt="{{movie.name}}">
                         <!-- <img src="assets/shrek2.jpg" alt="imagerwer"> -->
                         <div class="details">
-                            <h3>Test</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus corrupti earum accusamus libero enim illum eaque modi, nulla dolorum saepe sint molestias a ab, eius quod! Aperiam ex temporibus expedita?</p>
+                            <h3>{{movie.name}}</h3>
+                            <p>{{movie.description}}</p>
                         </div>
                     </div>
                 </a>
