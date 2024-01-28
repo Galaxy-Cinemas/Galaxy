@@ -12,23 +12,38 @@ export class MovieListComponent {
   movieList: any= [];
   private query : string = '';
   movies?:Observable<any>;
+  moviesLocal?:Observable<any>;
 
   constructor(private apiservices:MoviesService, private router: ActivatedRoute) { }
 
   ngOnInit(): void{
+  this.loadMovieListMarvel();
   this.loadMovieList();
+  }
+
+  loadMovieListMarvel(){
+    this.router.params.subscribe( params =>{
+      this.query = params['query'];
+      this.getAllMoviesMarvel();
+    })
   }
 
   loadMovieList(){
     this.router.params.subscribe( params =>{
-      this.query = params['query'];
       this.getAllMovies();
-      console.log(this.query);
     })
   }
 
+  // public config: PaginationInstance = {
+  //   itemsPerPage: 10,
+  //   currentPage: 1
+  // };
+
   getAllMovies(){
-    this.movies = this.apiservices.searchCharacters(this.query);
-    console.log(this.movies);
+    this.moviesLocal = this.apiservices.searchMovies();
+  }
+
+  getAllMoviesMarvel(){
+    this.movies = this.apiservices.searchCharactersMarvel(this.query);
   }
 }

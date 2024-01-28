@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    urlAPI: 'https://galaxi-movie-api.azurewebsites.net/'
+    api: 'https://galaxi-identity-api.azurewebsites.net/',
+    apiLocal: 'http://localhost:41191/',
 };
