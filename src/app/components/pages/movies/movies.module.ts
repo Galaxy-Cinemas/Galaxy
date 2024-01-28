@@ -11,7 +11,8 @@ const myComponents=[MovieListComponent, MovieDetailsComponent];
   declarations: [...myComponents],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    
   ],
   exports:[...myComponents]
 

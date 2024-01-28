@@ -1,6 +1,8 @@
 export const environment = {
     production: true,
-    urlAPI2: 'https://galaxi-movie-api.azurewebsites.net/',
+    api: 'https://galaxi-identity-api.azurewebsites.net/',
+    apiLocal: 'http://localhost:41191/',
+    apiMovieLocal: 'http://localhost:37061/',
 
     urlAPI: 'https://gateway.marvel.com:443/v1/public/characters',
     apiKey: 'de681b3e0c92ad76250d0dad553199dd',
