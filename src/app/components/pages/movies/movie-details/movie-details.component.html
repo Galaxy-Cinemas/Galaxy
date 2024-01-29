@@ -4,46 +4,34 @@
             <div class="title-container">
                 <h2>
                     <img src="assets\movie-details.png">
-                            Avengers 2
+                            {{movie?.title}}
                 </h2>
             </div>
         </div>
             
     </div>
-
-    <!-- <div class="content-card">
-        <div class="container">
-            <div class="card">
-                        <div class="image">
-                            <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer">
-                        </div>
-            </div>
-            <div>
-                <h1>sdfasdfasdf</h1>
-            </div>
-            <h3>wsefasdfasdf</h3>
-        </div>
-    </div> -->
-
-    <!-- <div class="movie" @enterState></div> -->
     <div class="movie">
         <div class="content-card">
             <div class="container">
                 <div class="card">
                             <div class="image">
-                                <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer">
+                                <img src="assets/imageNotFound.jpg" alt="imagerwer">
                                 <!-- <img src="assets/shrek2.jpg" alt="imagerwer"> -->
                             </div>
                 </div>
             </div>
             <div class="modal-wrap description">
                 <h3>Sinopsis</h3>
-                <p>Avengers: Age of Ultron" sigue a los Vengadores mientras enfrentan una nueva amenaza, Ultron, un inteligencia artificial creado por Tony Stark para proteger la Tierra. Sin embargo, Ultron se vuelve contra sus creadores, creyendo que la única forma de salvar al mundo es erradicar a la humanidad. Los Vengadores, junto con nuevos aliados como la Bruja Escarlata y Quicksilver, luchan contra Ultron en una batalla global que pone a prueba su unidad y fuerza. La película explora conflictos internos, responsabilidades y las consecuencias de las acciones de Stark, mientras establece importantes desarrollos para el Universo Cinematográfico de Marvel.</p>
+                <!-- <p>Avengers: Age of Ultron" sigue a los Vengadores mientras enfrentan una nueva amenaza, Ultron, un inteligencia artificial creado por Tony Stark para proteger la Tierra. Sin embargo, Ultron se vuelve contra sus creadores, creyendo que la única forma de salvar al mundo es erradicar a la humanidad. Los Vengadores, junto con nuevos aliados como la Bruja Escarlata y Quicksilver, luchan contra Ultron en una batalla global que pone a prueba su unidad y fuerza. La película explora conflictos internos, responsabilidades y las consecuencias de las acciones de Stark, mientras establece importantes desarrollos para el Universo Cinematográfico de Marvel.</p> -->
+                <p class=" image-back">{{movie?.description}}</p>
                 <h3>Funciones</h3>
-                <p class="image-back">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi saepe aliquam dolorum perspiciatis molestias odio, cumque, fugiat eligendi eveniet iure quo qui animi sapiente officiis provident culpa modi, totam voluptatum!</p>
+                <p class=" image-back">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi saepe aliquam dolorum perspiciatis molestias odio, cumque, fugiat eligendi eveniet iure quo qui animi sapiente officiis provident culpa modi, totam voluptatum!</p>
             </div>
         </div>
     </div>
+
+
+
 </div>
 
 

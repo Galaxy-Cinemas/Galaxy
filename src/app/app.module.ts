@@ -9,12 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HeaderComponent } from './shared/components/header/header.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { InterceptorService } from './shared/services/interceptor.service';
+import { FunctionsComponent } from './components/pages/functions/functions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    FunctionsComponent
   ],
   imports: [
     BrowserModule,

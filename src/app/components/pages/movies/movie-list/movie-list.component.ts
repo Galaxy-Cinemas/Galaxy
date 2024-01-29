@@ -21,6 +21,17 @@ export class MovieListComponent {
   this.loadMovieList();
   }
 
+  loadMovieList(){
+    this.router.params.subscribe( params =>{
+      this.getAllMovies();
+    })
+  }
+
+  getAllMovies(){
+    this.moviesLocal = this.apiservices.searchMovies();
+  }
+
+
   loadMovieListMarvel(){
     this.router.params.subscribe( params =>{
       this.query = params['query'];
@@ -28,22 +39,12 @@ export class MovieListComponent {
     })
   }
 
-  loadMovieList(){
-    this.router.params.subscribe( params =>{
-      this.getAllMovies();
-    })
+  getAllMoviesMarvel(){
+    this.movies = this.apiservices.searchCharactersMarvel(this.query);
   }
 
   // public config: PaginationInstance = {
   //   itemsPerPage: 10,
   //   currentPage: 1
   // };
-
-  getAllMovies(){
-    this.moviesLocal = this.apiservices.searchMovies();
-  }
-
-  getAllMoviesMarvel(){
-    this.movies = this.apiservices.searchCharactersMarvel(this.query);
-  }
 }

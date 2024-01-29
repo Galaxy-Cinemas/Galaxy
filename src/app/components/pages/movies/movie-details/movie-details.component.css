@@ -46,7 +46,7 @@
 }
 
 .description{
-    margin-left: 20px;
+    margin-left: -300px;
 }
 
 .description h3{
@@ -64,17 +64,21 @@ color: rgb(207, 148, 38);
 
 
 .card {
-    width : 300px;
+    /* width : 300px; */
+    width: 300px;
+    height: 400px;
     background-color : #000000;
     /* margin : 10px 10px; */
-    padding : 5px 5px;
+    padding : 4px 4px;
     border-radius: 5%;
 }
 
 .card .image img {
     border-radius: 5%;
-    height: 100%;
-    width: 100%;
+
+    width: 290px;
+    height: 390px;
+    
     transition: all 500ms ease-out;
     /* object-fit: cover; */
 }

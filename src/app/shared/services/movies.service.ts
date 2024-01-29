@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment.development';
 import { Observable, map } from 'rxjs';
+import { ResponseObject } from '../interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,18 @@ export class MoviesService {
   sendQueryLocal(query=''){
     return this.http.get<any>(`${query}`).pipe(map((data:any)=>data));
   }
+
+  getMovieById(id:number):Observable<ResponseObject>{
+    let urlBase = `${environment.apiMovie}`;
+    let search = `v1/Movie/GetById/${id}`;
+    console.log(urlBase + search);
+
+    // return this.http.get<any>(urlBase + search);
+    return this.sendQueryLocal(urlBase + search);
+    // return this.http.get<any>(`${query}`).pipe(map((data:any)=>data));
+  }
+
+
 
   sendQuery(query=''){
     return this.http.get<any>(`${query}`).pipe(map((data:any)=>data.data.results));
