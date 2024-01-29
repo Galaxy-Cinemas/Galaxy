@@ -44,11 +44,14 @@ export class LoginComponent implements OnInit, OnDestroy{
       password: this.formLogin.value.password
     };
 
+
+const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authentication';
+
     const url = environment.api + 'v1/identity/authentication';
     this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
              .subscribe(res => {
               const token = res.body?.response;
-              console.log('token', token);
+              // console.log('token', token);
               sessionStorage.setItem('token', token!);
               this.router.navigate(['/'])
              });

@@ -8,13 +8,8 @@ import { Observable, map } from 'rxjs';
 })
 export class MoviesService {
 
-private urlApi = 'https://rickandmortyapi.com/api/character';
-
   constructor(private http: HttpClient) { }
 
-  public getData(): Observable<any>{
-    return this.http.get<any>(this.urlApi)
-  }
 
   searchCharactersMarvel(query='', orderBy=''){
     let urlBase = `${environment.urlAPI}?`;
@@ -27,7 +22,7 @@ private urlApi = 'https://rickandmortyapi.com/api/character';
   }
 
   searchMovies(){
-    let urlBase = `${environment.apiMovieLocal}`;
+    let urlBase = `${environment.apiMovie}`;
     let search = `v1/Movie/GetAll`;
   
     return this.sendQueryLocal(urlBase + search);
