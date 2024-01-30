@@ -11,42 +11,47 @@
             
     </div>
     <div class="movie">
-        <!-- <div class="content-card">
-            <div class="container">
-                <div class="card">
-                            <div class="image">
-                                <img src="assets/imageNotFound.jpg" alt="imagerwer">
-                            </div>
-                </div>
-            </div>
-            <div class="modal-wrap description">
-                <h3>Sinopsis</h3>
-                <p>Avengers: Age of Ultron" sigue a los Vengadores mientras enfrentan una nueva amenaza, Ultron, un inteligencia artificial creado por Tony Stark para proteger la Tierra. Sin embargo, Ultron se vuelve contra sus creadores, creyendo que la única forma de salvar al mundo es erradicar a la humanidad. Los Vengadores, junto con nuevos aliados como la Bruja Escarlata y Quicksilver, luchan contra Ultron en una batalla global que pone a prueba su unidad y fuerza. La película explora conflictos internos, responsabilidades y las consecuencias de las acciones de Stark, mientras establece importantes desarrollos para el Universo Cinematográfico de Marvel.</p>
-                <p class=" image-back">{{movie?.description}}</p>
-                <h3>Funciones</h3>
-                <button>8 am</button>
-            </div>
-        </div> -->
-
-
         <div class="content-card">
             <div class="character-img">
                 <img src="assets/imageNotFound.jpg" alt="imagerwer">
             </div>
             <div class="description modal-wrap">
                 <h4>Sinopsis</h4>
-                <!-- <p>Avengers: Age of Ultron" sigue a los Vengadores mientras enfrentan una nueva amenaza, Ultron, un inteligencia artificial creado por Tony Stark para proteger la Tierra. Sin embargo, Ultron se vuelve contra sus creadores, creyendo que la única forma de salvar al mundo es erradicar a la humanidad. Los Vengadores, junto con nuevos aliados como la Bruja Escarlata y Quicksilver, luchan contra Ultron en una batalla global que pone a prueba su unidad y fuerza. La película explora conflictos internos, responsabilidades y las consecuencias de las acciones de Stark, mientras establece importantes desarrollos para el Universo Cinematográfico de Marvel.</p> -->
               <p class=" image-back">{{movie?.description}}</p>
               <h4>Funciones</h4>
               <div class="container" *ngFor="let functions of (functionList | async)">
-                <button>{{functions?.functionDate}}</button>
+                
+                <button type="button" class="comic-name" >
+                    <label for="btn-modal" class="comic-name">
+                    {{functions?.functionDate}}
+                </label>
+                </button>
               </div>
             </div>
         </div>
     </div>
+</div>
 
 
-
+<input type="checkbox" id="btn-modal">
+<div class="modal">
+    <div class="contain-modal">
+                    <label for="btn-modal"><img src="./assets/btn-close.png"></label>
+                <br>
+                <br>
+                <div>
+        <div class="modal-wrap">
+                    <img src="assets/imageNotFound.jpg" alt="imagerwer">
+                    <div>
+                    <h1 class="title"></h1>
+                    <p class="description"></p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn-car" ><img src="assets/shopping-cart-primary.png"> Buy</button>
+                </div>
+            </div>
+    </div>
 </div>
 
 
