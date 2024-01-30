@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Ticket } from '@app/shared/interfaces/Ticket';
 import { MoviesService } from '@app/shared/services/movies.service';
-import { Observable, take } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-movie-details',
@@ -10,7 +13,20 @@ import { Observable, take } from 'rxjs';
 })
 export class MovieDetailsComponent {
 
-  constructor(private apiservices:MoviesService, private router: ActivatedRoute ) { }
+  formLogin: FormGroup;
+  subRef$! : Subscription;
+
+  constructor(private apiservices:MoviesService, private router: ActivatedRoute,private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router2: Router, ) 
+    {
+      this.formLogin = formBuilder.group({
+        email:['', Validators.required],
+        password: ['', Validators.required]
+      });
+
+     }
+
 
   movie:any;
   function:any;
@@ -50,6 +66,26 @@ export class MovieDetailsComponent {
   functionByMovieId(movieId: number){
     this.functionList = this.apiservices.getFunctionById(movieId);
   }
+
+//   Login(){
+
+//     const usuarioLogin:  Ticket = {
+//       functionId: this.formLogin.value.email,
+//       numSeats: this.formLogin.value.password
+//     };
+
+
+// const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authentication';
+
+//     const url = environment.api + 'v1/identity/authentication';
+//     this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
+//              .subscribe(res => {
+//               const token = res.body?.response;
+//               sessionStorage.setItem('token', token!);
+//               this.router.navigate(['/'])
+//              });
+
+//   }
 
   
   // public async functionById(movieId: number){

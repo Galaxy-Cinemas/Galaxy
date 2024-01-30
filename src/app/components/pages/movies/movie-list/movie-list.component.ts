@@ -17,7 +17,6 @@ export class MovieListComponent {
   constructor(private apiservices:MoviesService, private router: ActivatedRoute) { }
 
   ngOnInit(): void{
-  this.loadMovieListMarvel();
   this.loadMovieList();
   }
 
@@ -31,17 +30,6 @@ export class MovieListComponent {
     this.moviesLocal = this.apiservices.searchMovies();
   }
 
-
-  loadMovieListMarvel(){
-    this.router.params.subscribe( params =>{
-      this.query = params['query'];
-      this.getAllMoviesMarvel();
-    })
-  }
-
-  getAllMoviesMarvel(){
-    this.movies = this.apiservices.searchCharactersMarvel(this.query);
-  }
 
   // public config: PaginationInstance = {
   //   itemsPerPage: 10,
