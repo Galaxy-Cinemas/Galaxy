@@ -5,6 +5,8 @@ export const environment = {
     apiMovieLocal: 'http://localhost:37061/',
     apiMovie: 'https://galaxi-movie-api.azurewebsites.net/',
 
+    apiFunction: "https://galaxi-function-api.azurewebsites.net/",
+
     apim:'https://apim-galaxi.azure-api.net/',
 
     urlAPI: 'https://gateway.marvel.com:443/v1/public/characters',

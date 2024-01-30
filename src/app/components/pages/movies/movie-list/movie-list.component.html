@@ -22,13 +22,8 @@
         </div>
     </div> -->
 
-    <!-- <button (click)="(character.id)" class="btn btn-danger">View More</button>
-      <a [routerLink]="['/character-details', character.id]">
-    -->
-
     <div class="container"  *ngFor="let movie of (moviesLocal | async)">
         <div class="card">
-                <!-- <a [routerLink]="['/character-details', movie.id]"> -->
                 <a [routerLink]="['/movie-details', movie.movieId]" >
                     <div class="image">
                         <img src="assets/imageNotFound.jpg" alt="imagerwer">

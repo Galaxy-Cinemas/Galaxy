@@ -1,17 +1,17 @@
 .movie-details{
     margin-top: 20px;
-    /* background-color: #203A43; */
 }
 
 .main-container{
     width: 100%;
     border-color: #ff0000;
+    
 }
-
 
 /* Title */
 .container-flex{
     display: flex;
+    
 }
 .title-container{
     font-family: 'Courier New', Courier, monospace;
@@ -29,13 +29,14 @@
 
 /* Card */
 .content-card{
-    display: flex;
+    display: inline-flex;
     width: 100%;
     margin-top: -15px;
-    /* background-color: #203A43; */
+    
 }
 .movie {
     margin-top: 5px;
+    
 }
 
 .movie .movie-img img{
@@ -47,6 +48,7 @@
 
 .description{
     margin-left: -300px;
+    margin-left: 20px;
 }
 
 .description h3{
@@ -82,3 +84,70 @@ color: rgb(207, 148, 38);
     transition: all 500ms ease-out;
     /* object-fit: cover; */
 }
+
+
+/* TEST*/
+
+.movie{
+    margin-top: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.movie .character-img img{
+    border-radius: 5%;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}
+
+.content-card{
+    display: flex;
+    width: 100%;
+    /* margin-top: -15px; */
+}
+
+.description{
+    margin-left: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.description h4{
+font-weight: 300;
+color: rgb(207, 148, 38);
+}
+
+.description p{
+    font-family:  Courier;
+    font-size: 13px;
+    text-align: justify;
+}
+.container{
+
+    /* background-color: rgb(255, 0, 0); */
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.description button{
+    
+    /* font-weight: 500; */
+    color: #000000;
+    padding: 10px 20px;
+    background: #f3f1f1;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.description button:hover{
+    background-color: #ffbc0e;
+    color: #eceff1;
+    transform: scale(1.05);
+}
+

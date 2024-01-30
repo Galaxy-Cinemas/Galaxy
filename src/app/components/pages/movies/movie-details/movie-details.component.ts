@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '@app/shared/services/movies.service';
-import { take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,14 +13,17 @@ export class MovieDetailsComponent {
   constructor(private apiservices:MoviesService, private router: ActivatedRoute ) { }
 
   movie:any;
+  function:any;
+
+  functionList?:Observable<any>;
   id:any;
 
   ngOnInit(){
     this.loadMovie();
+    this.loadFunctionById();
   }
 
   private loadMovie(){
- 
     this.router.params.pipe(take(1)).subscribe((params)=>{
       this.id = params['id'];
       console.log(this.id);
@@ -35,17 +38,36 @@ export class MovieDetailsComponent {
       this.movie = res;
       console.log(this.movie);
      });
-    
-    //  .pipe(take(1));
   }
 
+  private loadFunctionById(){
+    this.router.params.subscribe((params)=>{
+      this.id = params['id'];
+      this.functionByMovieId(params['id']);
+    })
+  }
 
-  // this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
-  // .subscribe(res => {
-  //  const token = res.body?.response;
-  //  // console.log('token', token);
-  //  sessionStorage.setItem('token', token!);
-  //  this.router.navigate(['/'])
-  // });
+  functionByMovieId(movieId: number){
+    this.functionList = this.apiservices.getFunctionById(movieId);
+  }
+
+  
+  // public async functionById(movieId: number){
+  //   this.apiservices.getFunctionById(movieId)
+  //    .subscribe(async (res: any) =>{
+  //     this.functionList = res;
+  //     console.log(this.function);
+  //    });
+  // }
+
+  // loadFunctions(){
+  //   this.router.params.subscribe( params =>{
+  //     this.getAllFunctions();
+  //   })
+  // }
+
+  // getAllFunctions(){
+  //   this.functionList = this.apiservices.getAllFunctions();
+  // }
 
 }
