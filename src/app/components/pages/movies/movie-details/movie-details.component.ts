@@ -107,29 +107,22 @@ export class MovieDetailsComponent {
 
   createTicket(){
 
-    if (this.formTicket.valid) {
-      // Aquí puedes manejar la lógica para crear el ticket si el formulario es válido
-      console.log("Formulario válido. Creando ticket...");
-      const newTicket = 
+    const newTicket = 
       {
         functionId:this.functionId, 
         userName:"",
          numSeats: this.formTicket.value.numSets
         };
         console.log(newTicket);
-    } else {
-      // Mostrar alerta si el formulario no es válido
-      alert("El número de asientos debe ser al menos 1");
-    }
-   
-    // this.apiservices.BuyTicket(newTicket).subscribe( ticket => console.log(ticket))
+        console.log(this.id);
+    this.apiservices.BuyTicket(newTicket).subscribe( ticket => console.log(ticket));
   }
 
 
   /* Add Function  */
   addFunctionId(){
 
-    
+
   }
   
   // public async functionById(movieId: number){
