@@ -4,6 +4,7 @@ import { environment } from '@environment/environment.development';
 import { Observable, map } from 'rxjs';
 import { ResponseObject } from '../interfaces/response.interface';
 import { Ticket } from '../interfaces/Ticket';
+import { AddFunction } from '../interfaces/add-function';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,13 @@ export class MoviesService {
     console.log(query)
     return this.http.post<Ticket>(`${query}`, ticket);
   }
+  NewFunction(ticket: AddFunction):Observable<AddFunction>{
+    let Endpoint = `Function/v1/Create`;
+    let query = this.urlBase + Endpoint;
+    console.log(query)
+    return this.http.post<AddFunction>(`${query}`, ticket);
+  }
+
 
   sendQuery(query=''){
     return this.http.get<any>(`${query}`).pipe(map((data:any)=>data));

@@ -14,6 +14,7 @@ import { Observable, Subscription, take } from 'rxjs';
 export class MovieDetailsComponent {
 
   formTicket: FormGroup;
+  formFunction: FormGroup;
 
   constructor(private apiservices:MoviesService, 
     private router: ActivatedRoute,
@@ -23,6 +24,14 @@ export class MovieDetailsComponent {
     {
       this.formTicket = formBuilder.group({
         numSets:[1, [Validators.required, this.minimumValueValidator(1)]]
+      });
+
+      this.formFunction = formBuilder.group({
+        movieId:[0, Validators.required],
+        price:[5000, Validators.required],
+        functionDate:[, Validators.required],
+        Teather:[1, Validators.required],
+        numberOfSeats:[15, Validators.required],
       });
      }
 
@@ -111,18 +120,30 @@ export class MovieDetailsComponent {
       {
         functionId:this.functionId, 
         userName:"",
-         numSeats: this.formTicket.value.numSets
-        };
+        numSeats: this.formTicket.value.numSets
+      };
         console.log(newTicket);
         console.log(this.id);
-    this.apiservices.BuyTicket(newTicket).subscribe( ticket => console.log(ticket));
+    // this.apiservices.BuyTicket(newTicket).subscribe( ticket => console.log(ticket));
   }
 
 
   /* Add Function  */
   addFunctionId(){
-
-
+      const newFunction = 
+      {
+        movieId: this.id,
+        price: this.formFunction.value.price,
+        functionDate: "2024-01-18T01:14:14.788Z",
+        Teather: this.formFunction.value.Teather,
+        numberOfSeats: this.formFunction.value.numberOfSeats
+      }
+      console.log(newFunction);
+      this.apiservices.NewFunction(newFunction).subscribe( functions => 
+        {
+          console.log(functions); 
+          this.router2.navigate(['/'])
+        });
   }
   
   // public async functionById(movieId: number){

@@ -8,19 +8,6 @@
             
         </div>
     </div>
-    <!-- <div class="container"  *ngFor="let movie of (movies | async)">
-        <div class="card">
-                <a [routerLink] = "['/movie-details']">
-                    <div class="image">
-                        <img src="{{movie.thumbnail.path}}.{{movie.thumbnail.extension}}" alt="{{movie.name}}">
-                        <div class="details">
-                            <h3>{{movie.name}}</h3>
-                            <p>{{movie.description}}</p>
-                        </div>
-                    </div>
-                </a>
-        </div>
-    </div> -->
 
     <div class="container"  *ngFor="let movie of (moviesLocal | async)">
         <div class="card">

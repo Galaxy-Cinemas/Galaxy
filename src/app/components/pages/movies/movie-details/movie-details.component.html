@@ -28,9 +28,9 @@
                 </button>
               </div>
               <div class="container">
-                <button type="button" (click)="addFunctionId()">
-                    <label  class="function-id">
-                       agregar funcion
+                <button type="button">
+                    <label for="create-function" class="function-id">
+                        Agregar Función
                     </label>
                 </button>
               </div>
@@ -39,13 +39,14 @@
     </div>
 </div>
 
+<!-------------------------------------------------------------------- MODAL BUY TICKET ---------------------------------------------------------------------------------->
 
 <input type="checkbox" id="btn-modal">
 <div class="modal">
     <div class="contain-modal">
                     <label class="close" for="btn-modal"><img src="./assets/btn-close.png"></label>
                 <br>
-                
+                <br>
                 <div>
         <div class="card-ticket modal-wrap">
                     <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer">
@@ -72,36 +73,48 @@
 </div>
 
 
-<!-- <input type="checkbox" id="btn-modal">
-<div class="modal">
-    <div class="contain-modal">
-                    <label class="close" for="btn-modal"><img src="./assets/btn-close.png"></label>
-                <br>
-                
-                <div>
-        <div class="card-ticket modal-wrap">
-                    <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer">
-                    <div>
-                    <h4 class="title">  {{movie?.title}}</h4>
-                    <p >Funcion #{{functionId}}</p>
-                    <form [formGroup]="formTicket" >
-                        <div>
-                            <label># Seats</label>
-                            <input class="labelFormTicket" type="number" formControlName="numSets" [class.is-invalid] = "numSetsNoValid">
-                            <div>
-                                <small *ngIf="numSetsNoValid" class="text-danger">Numero de asientos invalido</small>
+<!-------------------------------------------------------------------- MODAL CREATE FUNCTIO ------------------------------------------------------------------------------>
+
+<input type="checkbox" id="create-function">
+<div class="modal-function">
+                <div id="contenedor">
+                    
+                    <div id="central">
+                        <div id="login">
+                            <div class="close-create-function">
+                                <label  for="create-function"><img src="./assets/btn-close.png"></label>
                             </div>
-                            
+                            <div class="titulo">
+                                <p>Agregar Función</p>
+                            </div>
+                            <form [formGroup]="formFunction" (ngSubmit)="addFunctionId()">
+                                <div>
+                                    <label>Precio</label>
+                                    <input type="number" placeholder="Precio" formControlName="price" >
+                                </div>
+                                <div>
+                                    <label>Fecha</label>
+                                    <input type="datetime"  formControlName="functionDate">
+                                </div>
+                                <div>
+                                    <label>Teatro</label>
+                                    <input type="number"  formControlName="Teather">
+                                </div>
+                                <div>
+                                    <label>Numero de sillas</label>
+                                    <input type="number" formControlName="numberOfSeats">
+                                </div>
+                                
+                                <div>
+                                    <button [disabled]="!formTicket.valid" type="submit">
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
                     </div>
                 </div>
-                <div>
-                    <button class="btn-buy" (click)="createTicket()" ><img src="assets/boleto.png"></button>
-                </div>
-            </div>
-    </div>
-</div> -->
+</div>
 
 
 
