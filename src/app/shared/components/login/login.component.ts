@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy{
       });
       
     }
+
   ngOnDestroy(): void {
     if(this.subRef$){
       this.subRef$.unsubscribe();
@@ -38,12 +39,12 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
   }
+  
   Login(){
     const usuarioLogin:  Login = {
       email: this.formLogin.value.email,
       password: this.formLogin.value.password
     };
-
 
 const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authentication';
 
@@ -51,22 +52,9 @@ const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authenticati
     this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
              .subscribe(res => {
               const token = res.body?.response;
-              // console.log('token', token);
               sessionStorage.setItem('token', token!);
               this.router.navigate(['/'])
              });
-
-    // const url = 'http://localhost:41191/' + 'v1/identity/authentication';
-    // this.subRef$ = this.dataService.post<responseAuth>(url,
-    //   usuarioLogin)
-    //   .subscribe(res => {
-    //     const token = res.body?.response;
-    //     console.log('token', token);
-    //     this.securityService.SetAuthData(token);
-    //     this.router.navigate(['/home']);
-    //   }, err => {
-    //     console.log('Error en el login', err);
-    //   });
 
   }
 

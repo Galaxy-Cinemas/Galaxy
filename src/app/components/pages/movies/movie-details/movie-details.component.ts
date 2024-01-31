@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Ticket } from '@app/shared/interfaces/Ticket';
 import { MoviesService } from '@app/shared/services/movies.service';
-import { Observable, take } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-movie-details',
@@ -10,28 +13,44 @@ import { Observable, take } from 'rxjs';
 })
 export class MovieDetailsComponent {
 
-  constructor(private apiservices:MoviesService, private router: ActivatedRoute ) { }
+  formTicket: FormGroup;
+
+  constructor(private apiservices:MoviesService, 
+    private router: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router2: Router ) 
+    {
+      this.formTicket = formBuilder.group({
+        numSets:[1, [Validators.required, this.minimumValueValidator(1)]]
+      });
+     }
+
 
   movie:any;
   function:any;
+  ticket: Ticket[] = [];
+
+  functionId!: number;
+  test:string = "";
 
   functionList?:Observable<any>;
   id:any;
 
   ngOnInit(){
     this.loadMovie();
-    this.loadFunctionById();
+    this.loadFunctionByMovieId();
   }
 
+  /* GET MOVIE BY ID*/
   private loadMovie(){
     this.router.params.pipe(take(1)).subscribe((params)=>{
       this.id = params['id'];
       console.log(this.id);
-      this.modalMovie(params['id']);
+      this.MovieById(params['id']);
     })
   }
-
- public async modalMovie(movieId: number){
+ public async MovieById(movieId: number){
     this.apiservices.getMovieById(movieId)
      .pipe(take(1))
      .subscribe(async (res: any) =>{
@@ -40,17 +59,71 @@ export class MovieDetailsComponent {
      });
   }
 
-  private loadFunctionById(){
+  /* GET FUNCTION BY MOVIE ID*/
+  private loadFunctionByMovieId(){
     this.router.params.subscribe((params)=>{
       this.id = params['id'];
       this.functionByMovieId(params['id']);
     })
   }
 
-  functionByMovieId(movieId: number){
-    this.functionList = this.apiservices.getFunctionById(movieId);
+  public async functionByMovieId(movieId: number){
+    this.functionList = this.apiservices.getFunctionByMovieId(movieId);
   }
 
+/* GET FUNCTION BY ID*/
+  private loadFunctionById(){
+    this.router.params.subscribe((params)=>{
+      this.functionById(this.functionId);
+    })
+  }
+
+  functionById(movieId: number){
+    this.functionList = this.apiservices.getFunctionById(movieId);
+  }
+  
+  saveFunctionId(functionId:number){
+    console.log(this.functionId);
+    this.functionId = functionId;
+    console.log(this.functionId);
+  }
+
+  /* CREATE TICKET*/
+
+  get numSetsNoValid(){
+    return this.formTicket.get('numSets')?.invalid 
+  }
+
+  minimumValueValidator(minimumValue: number) {
+    return (control :AbstractControl) => {
+      const value = control.value;
+      if (value < minimumValue) {
+        console.log({ minValue: { requiredValue: minimumValue, actualValue: value } });
+        return { minValue: { requiredValue: minimumValue, actualValue: value } };
+      }
+      return null;
+    };
+  }
+
+  createTicket(){
+
+    const newTicket = 
+      {
+        functionId:this.functionId, 
+        userName:"",
+         numSeats: this.formTicket.value.numSets
+        };
+        console.log(newTicket);
+        console.log(this.id);
+    this.apiservices.BuyTicket(newTicket).subscribe( ticket => console.log(ticket));
+  }
+
+
+  /* Add Function  */
+  addFunctionId(){
+
+
+  }
   
   // public async functionById(movieId: number){
   //   this.apiservices.getFunctionById(movieId)
