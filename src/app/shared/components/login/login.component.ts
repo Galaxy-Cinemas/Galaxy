@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy{
       });
       
     }
+
   ngOnDestroy(): void {
     if(this.subRef$){
       this.subRef$.unsubscribe();
@@ -38,12 +39,12 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
   }
+  
   Login(){
     const usuarioLogin:  Login = {
       email: this.formLogin.value.email,
       password: this.formLogin.value.password
     };
-
 
 const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authentication';
 

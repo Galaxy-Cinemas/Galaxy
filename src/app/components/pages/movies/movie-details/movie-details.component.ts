@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ticket } from '@app/shared/interfaces/Ticket';
 import { MoviesService } from '@app/shared/services/movies.service';
@@ -13,41 +13,44 @@ import { Observable, Subscription, take } from 'rxjs';
 })
 export class MovieDetailsComponent {
 
-  formLogin: FormGroup;
-  subRef$! : Subscription;
+  formTicket: FormGroup;
 
-  constructor(private apiservices:MoviesService, private router: ActivatedRoute,private formBuilder: FormBuilder,
+  constructor(private apiservices:MoviesService, 
+    private router: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router2: Router, ) 
+    private router2: Router ) 
     {
-      this.formLogin = formBuilder.group({
-        email:['', Validators.required],
-        password: ['', Validators.required]
+      this.formTicket = formBuilder.group({
+        numSets:[1, [Validators.required, this.minimumValueValidator(1)]]
       });
-
      }
 
 
   movie:any;
   function:any;
+  ticket: Ticket[] = [];
+
+  functionId!: number;
+  test:string = "";
 
   functionList?:Observable<any>;
   id:any;
 
   ngOnInit(){
     this.loadMovie();
-    this.loadFunctionById();
+    this.loadFunctionByMovieId();
   }
 
+  /* GET MOVIE BY ID*/
   private loadMovie(){
     this.router.params.pipe(take(1)).subscribe((params)=>{
       this.id = params['id'];
       console.log(this.id);
-      this.modalMovie(params['id']);
+      this.MovieById(params['id']);
     })
   }
-
- public async modalMovie(movieId: number){
+ public async MovieById(movieId: number){
     this.apiservices.getMovieById(movieId)
      .pipe(take(1))
      .subscribe(async (res: any) =>{
@@ -56,37 +59,78 @@ export class MovieDetailsComponent {
      });
   }
 
-  private loadFunctionById(){
+  /* GET FUNCTION BY MOVIE ID*/
+  private loadFunctionByMovieId(){
     this.router.params.subscribe((params)=>{
       this.id = params['id'];
       this.functionByMovieId(params['id']);
     })
   }
 
-  functionByMovieId(movieId: number){
-    this.functionList = this.apiservices.getFunctionById(movieId);
+  public async functionByMovieId(movieId: number){
+    this.functionList = this.apiservices.getFunctionByMovieId(movieId);
   }
 
-//   Login(){
+/* GET FUNCTION BY ID*/
+  private loadFunctionById(){
+    this.router.params.subscribe((params)=>{
+      this.functionById(this.functionId);
+    })
+  }
 
-//     const usuarioLogin:  Ticket = {
-//       functionId: this.formLogin.value.email,
-//       numSeats: this.formLogin.value.password
-//     };
+  functionById(movieId: number){
+    this.functionList = this.apiservices.getFunctionById(movieId);
+  }
+  
+  saveFunctionId(functionId:number){
+    console.log(this.functionId);
+    this.functionId = functionId;
+    console.log(this.functionId);
+  }
+
+  /* CREATE TICKET*/
+
+  get numSetsNoValid(){
+    return this.formTicket.get('numSets')?.invalid 
+  }
+
+  minimumValueValidator(minimumValue: number) {
+    return (control :AbstractControl) => {
+      const value = control.value;
+      if (value < minimumValue) {
+        console.log({ minValue: { requiredValue: minimumValue, actualValue: value } });
+        return { minValue: { requiredValue: minimumValue, actualValue: value } };
+      }
+      return null;
+    };
+  }
+
+  createTicket(){
+
+    if (this.formTicket.valid) {
+      // Aquí puedes manejar la lógica para crear el ticket si el formulario es válido
+      console.log("Formulario válido. Creando ticket...");
+      const newTicket = 
+      {
+        functionId:this.functionId, 
+        userName:"",
+         numSeats: this.formTicket.value.numSets
+        };
+        console.log(newTicket);
+    } else {
+      // Mostrar alerta si el formulario no es válido
+      alert("El número de asientos debe ser al menos 1");
+    }
+   
+    // this.apiservices.BuyTicket(newTicket).subscribe( ticket => console.log(ticket))
+  }
 
 
-// const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authentication';
+  /* Add Function  */
+  addFunctionId(){
 
-//     const url = environment.api + 'v1/identity/authentication';
-//     this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
-//              .subscribe(res => {
-//               const token = res.body?.response;
-//               sessionStorage.setItem('token', token!);
-//               this.router.navigate(['/'])
-//              });
-
-//   }
-
+    
+  }
   
   // public async functionById(movieId: number){
   //   this.apiservices.getFunctionById(movieId)

@@ -30,7 +30,6 @@ export class MovieListComponent {
     this.moviesLocal = this.apiservices.searchMovies();
   }
 
-
   // public config: PaginationInstance = {
   //   itemsPerPage: 10,
   //   currentPage: 1

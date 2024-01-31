@@ -86,7 +86,7 @@ color: rgb(207, 148, 38);
 }
 
 
-/* Comic Modal */
+/* Ticket Modal */
 .modal{
 
     background-color: #ff0000;
@@ -114,9 +114,13 @@ color: rgb(207, 148, 38);
  } 
 
  .contain-modal{
-    width: 600px;
+    width: 450px;
     margin: auto;
-    background: #fff;
+    background: #ffffff;
+    /* background: #141E30;  
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  
+    background: linear-gradient(to left, #243B55, #141E30); */
+    border-radius: 10px;
     box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
     transition: all 500ms ease;
     position: relative;
@@ -127,7 +131,7 @@ color: rgb(207, 148, 38);
     transform: translateY(0%);
  } 
 
- .contain-modal label{
+ .contain-modal .close{
     position: absolute;
     top: 10px;
     right: 10px;
@@ -145,31 +149,52 @@ color: rgb(207, 148, 38);
 
 .modal-wrap img {
     display: block;
-    max-width: 500px;
-    max-height: 260px; 
+    min-width: 200px;
+    max-width: 400px;
+    max-height: 210px; 
+    border-radius: 10%;
     object-fit: contain;
     height: auto;
-    float: left;
-    margin-right: 20px;
-}
-.btn-car
- {
     
-    width: 30%;
-    margin-left: 35%;
-    margin-bottom: 5px;
+    float: left;
+    margin: 10px;
+}
+.card-ticket h4{
+    color: #ffbc0e;
+    font-weight: 300;
+    text-align: justify;
+}
+
+/* .card-ticket{
+    color: #eceff1;
+    font-family:  Courier;
+    font-size: 15px;
+    text-align: justify;
+} */
+.btn-buy
+ {
+    width: 25%;
+    margin-left: 37.5%;
+    margin-bottom: 10px;
     background-color: rgb(226, 222, 222);
     border: none;
     border-radius: 20px;
     font-weight: bolder;
-    height: 70px;
-    color: rgb(228, 40, 40);
+    height: 60px;
+    
  }
- .btn-car:hover{
+ .btn-buy:hover{
     background-color: #ffbc0e;
     color: #eceff1;
     transform: scale(1.05);
  }
- .btn-car img{
+ .btn-buy img{
     height: 80%;
+ }
+
+ /* FormTicket */
+ .labelFormTicket{
+    display: inline;
+    margin-left: 15px;
+    width: 50px;
  }

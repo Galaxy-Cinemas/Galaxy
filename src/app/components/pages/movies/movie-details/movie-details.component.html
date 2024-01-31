@@ -19,11 +19,18 @@
                 <h4>Sinopsis</h4>
               <p class=" image-back">{{movie?.description}}</p>
               <h4>Funciones</h4>
-              <div class="container" *ngFor="let functions of (functionList | async)">
+              <div class="container" *ngFor="let function of (functionList | async)">
                 
-                <button type="button" class="comic-name" >
+                <button type="button" class="comic-name" (click)="saveFunctionId(function.functionId)">
                     <label for="btn-modal" class="comic-name">
-                    {{functions?.functionDate}}
+                    {{function?.functionDate}}
+                </label>
+                </button>
+              </div>
+              <div class="container">
+                <button type="button" class="comic-name" (click)="addFunctionId()">
+                    <label for="btn-modal" class="comic-name">
+                    + Function
                 </label>
                 </button>
               </div>
@@ -36,22 +43,39 @@
 <input type="checkbox" id="btn-modal">
 <div class="modal">
     <div class="contain-modal">
-                    <label for="btn-modal"><img src="./assets/btn-close.png"></label>
+                    <label class="close" for="btn-modal"><img src="./assets/btn-close.png"></label>
                 <br>
-                <br>
+                
                 <div>
-        <div class="modal-wrap">
-                    <img src="assets/imageNotFound.jpg" alt="imagerwer">
+        <div class="card-ticket modal-wrap">
+                    <img src="assets/AVENGER2POSTER.jpg" alt="imagerwer">
                     <div>
-                    <h1 class="title"></h1>
-                    <p class="description"></p>
+                    <h4 class="title">  {{movie?.title}}</h4>
+                    <p >Funcion #{{functionId}}</p>
+                    <form [formGroup]="formTicket" >
+                        <div>
+                            <label># Seats</label>
+                            <input class="labelFormTicket" type="number" formControlName="numSets" [class.is-invalid] = "numSetsNoValid">
+                            <div>
+                                <small *ngIf="numSetsNoValid" class="text-danger">Numero de asientos invalido</small>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <!-- <button class="btn-modal btn-buy"  [disabled]="!formTicket.valid" type="submit">
+                                <img src="assets/boleto.png">
+                            </button> -->
+                        </div>
+                    </form>
                     </div>
                 </div>
                 <div>
-                    <button class="btn-car" ><img src="assets/boleto.png"></button>
+                    <button class="btn-buy" (click)="createTicket()" ><img src="assets/boleto.png"></button>
+                    <!-- <button class="btn-modal btn-buy"  ><img src="assets/boleto.png"></button> -->
                 </div>
             </div>
     </div>
 </div>
+
 
 
