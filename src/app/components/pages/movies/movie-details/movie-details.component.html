@@ -73,20 +73,19 @@
 </div>
 
 
-<!-------------------------------------------------------------------- MODAL CREATE FUNCTIO ------------------------------------------------------------------------------>
+<!-------------------------------------------------------------------- MODAL CREATE FUNCTION ------------------------------------------------------------------------------>
 
 <input type="checkbox" id="create-function">
 <div class="modal-function">
                 <div id="contenedor">
-                    
-                    <div id="central">
+                    <div class="central">
                         <div id="login">
-                            <div class="close-create-function">
-                                <label  for="create-function"><img src="./assets/btn-close.png"></label>
-                            </div>
-                            <div class="titulo">
+                            <!-- <div class="close-create-function"> -->
+                                <label class="close-create-function" for="create-function"><img src="./assets/btn-close.png"></label>
+                            <!-- </div> -->
+                            <!-- <div class="titulo">
                                 <p>Agregar Función</p>
-                            </div>
+                            </div> -->
                             <form [formGroup]="formFunction" (ngSubmit)="addFunctionId()">
                                 <div>
                                     <label>Precio</label>
@@ -107,7 +106,7 @@
                                 
                                 <div>
                                     <button [disabled]="!formTicket.valid" type="submit">
-                                        Login
+                                        Agregar Funcion
                                     </button>
                                 </div>
                             </form>
