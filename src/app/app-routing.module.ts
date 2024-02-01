@@ -9,6 +9,8 @@ const routes: Routes = [
 // {path: 'movie-list', component: MovieListModule},
  { path: 'movie-list', loadChildren: () => import('./components/pages/movies/movie-list/movie-list.module').then(m => m.MovieListModule) },
  {path: 'movie-details/:id', loadChildren: () => import('./components/pages/movies/movie-details/movie-details.module').then((m) => m.MovieDetailsModule)},
+ {path: 'movie-update/:id', loadChildren: () => import('./components/pages/movies/update-movie/update-movie.module').then((m) => m.UpdateMovieModule)},
+ {path: 'movie-create/:id', loadChildren: () => import('./components/pages/movies/update-movie/update-movie.module').then((m) => m.UpdateMovieModule)},
 
  {path: 'login', component: LoginComponent}
 ];

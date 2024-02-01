@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { ResponseObject } from '../interfaces/response.interface';
 import { Ticket } from '../interfaces/Ticket';
 import { AddFunction } from '../interfaces/add-function';
-import { AddMovie } from '../interfaces/add-movie';
+import { Movie } from '../interfaces/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,11 @@ export class MoviesService {
 
 
   //-------------------------------------------------  MOVIES -------------------------------------------------------------------------------------------------------
-  NewMovie(movie: AddMovie):Observable<AddMovie>{
+  NewMovie(movie: Movie):Observable<Movie>{
     let Endpoint = `Movie/v1/Movie/Create`;
     let query = this.urlBase + Endpoint;
     console.log(query)
-    return this.http.post<AddMovie>(`${query}`, movie);
+    return this.http.post<Movie>(`${query}`, movie);
   }
   
   searchMovies(){
@@ -38,11 +38,11 @@ export class MoviesService {
     return this.sendQuery(this.urlBase + search);
   }
 
-  updateMovie(movie: AddMovie):Observable<AddMovie>{
-    let Endpoint = `Movie/v1/Movie/Create`;
+  updateMovie(movieId:number, movie: Movie):Observable<Movie>{
+    let Endpoint = `Movie/v1/Movie/Update/${movieId}`;
     let query = this.urlBase + Endpoint;
     console.log(query)
-    return this.http.post<AddMovie>(`${query}`, movie);
+    return this.http.put<Movie>(`${query}`, movie);
   }
 
   deleteMovieById(id:number):Observable<number>{

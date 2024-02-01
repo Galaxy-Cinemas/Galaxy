@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddMovie } from '@app/shared/interfaces/add-movie';
+import { Movie } from '@app/shared/interfaces/movie';
 import { MoviesService } from '@app/shared/services/movies.service';
 import { Observable } from 'rxjs';
 
@@ -52,7 +52,7 @@ export class MovieListComponent {
   addMovieId()
   {
     alert("Se ha agregado una nueva pelicula");
-    const newMovie: AddMovie =
+    const newMovie: Movie =
     {
       title: this.formMovie.value.title,
       description: this.formMovie.value.description,

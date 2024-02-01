@@ -1,4 +1,5 @@
-export interface AddMovie {
+export interface Movie {
+    MovieId?:number,
     title: string,
     description: string,
     author: string,
