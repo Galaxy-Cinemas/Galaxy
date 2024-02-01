@@ -56,7 +56,12 @@
 <input type="checkbox" id="btn-modal">
 <div class="modal">
     <div class="contain-modal">
+        
                     <label class="close" for="btn-modal"><img src="./assets/btn-close.png"></label>
+                    <a (click)="deleteFunction()">
+                        <label class="close-delete" for="btn-modal"><img src="./assets/delete.png"></label>
+                    </a>
+                    
                 <br>
                 <br>
                 <div>
@@ -117,7 +122,8 @@
                                 </div>
                                 
                                 <div>
-                                    <button [disabled]="!formTicket.valid" type="submit">
+                                    <button [disabled]="!formTicket.valid" type="submit" for="btn-modal">
+                                        
                                         Agregar Funcion
                                     </button>
                                 </div>

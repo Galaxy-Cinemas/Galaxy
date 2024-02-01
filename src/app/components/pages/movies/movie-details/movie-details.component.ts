@@ -66,6 +66,24 @@ export class MovieDetailsComponent {
      });
   }
 
+  /* ---------------------------------------------------------------------- DELETE FUNCTION BY ID ---------------------------------------------------------------------- */
+  public async deleteFunction(){
+    let deleteMovie = confirm("Desea eliminar la funcion?")
+    if(deleteMovie){
+
+      this.deleteFunctionId()
+    }
+    
+  }
+  public async deleteFunctionId(){
+    this.apiservices.deleteFunctionById(this.functionId).subscribe((res) => 
+    {
+      this.loadFunctionByMovieId();
+      console.log(res);
+      this.router.navigate(['/movie-details', this.movieId]);
+    });
+  }
+
   /* ---------------------------------------------------------------------- DELETE MOVIE BY ID ---------------------------------------------------------------------- */
 
   public async deleteMovie(){
@@ -73,9 +91,6 @@ export class MovieDetailsComponent {
     if(deleteMovie){
 
       this.deleteMovieId()
-      
-      // this.router.navigate(['/'])
-      // console.log("Eliminada")
     }
     
   }
@@ -140,11 +155,15 @@ export class MovieDetailsComponent {
         userName:"",
         numSeats: this.formTicket.value.numSets
       };
-    this.apiservices.BuyTicket(newTicket).subscribe( () => alert("Ticked Creado"));
+    this.apiservices.BuyTicket(newTicket).subscribe( () => 
+    {
+      alert("Ticked Creado");
+      this.router.navigate(['/movie-details', this.movieId]);
+    });
   }
 
 
-  /* ---------------------------------------------------------------------- Add Function  ---------------------------------------------------------------------- */
+  /* ---------------------------------------------------------------------- CREATE FUNCTION  ---------------------------------------------------------------------- */
   addFunctionId(){
       const newFunction = 
       {
@@ -155,13 +174,18 @@ export class MovieDetailsComponent {
         numberOfSeats: this.formFunction.value.numberOfSeats
       }
       console.log(newFunction);
-      this.apiservices.NewFunction(newFunction).subscribe();
-        this.reloadCurrentRoute();
+      this.apiservices.NewFunction(newFunction).subscribe(() => 
+        {
+          this.loadFunctionByMovieId();
+      this.router.navigate(['/movie-details', this.movieId]);
+        }
+      );
+      
   }
 
   reloadCurrentRoute() {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([this.ActRouter.url]);
+      this.router.navigate([this.router.url]);
     });
   }
   

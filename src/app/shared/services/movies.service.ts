@@ -74,6 +74,12 @@ export class MoviesService {
     return this.http.post<AddFunction>(`${query}`, func);
   }
 
+  deleteFunctionById(id:number):Observable<number>{
+    let Endpoint = `Function/v1/Delete/${id}`;
+    let query = this.urlBase + Endpoint;
+    return this.http.delete<number>(`${query}`);
+  }
+
   //-------------------------------------------------  TICKET -------------------------------------------------------------------------------------------------------
 
   BuyTicket(ticket: Ticket):Observable<Ticket>{

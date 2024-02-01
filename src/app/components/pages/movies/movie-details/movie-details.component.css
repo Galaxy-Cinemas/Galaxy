@@ -143,6 +143,21 @@ color: rgb(207, 148, 38);
     font-size: 15px;
     cursor: pointer;
  }
+
+ .close-delete{
+    position: absolute;
+    top: 9px;
+    right: 50px;
+    color: #050505;
+    font-size: 15px;
+    cursor: pointer;
+ }
+
+
+ .close-delete img{
+    width: 30px;
+    cursor: pointer;
+ }
  #btn-modal{
     display: none;
  }
