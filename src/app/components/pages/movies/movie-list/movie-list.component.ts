@@ -36,19 +36,7 @@ export class MovieListComponent {
 
   ngOnInit(): void{
   this.loadMovieList();
-  this.isAdmin();
-  }
-
-  isAdmin(): boolean {
-    // Decodificar el token JWT y obtener los roles
-    const token = sessionStorage.getItem('token'); // Obtener el token JWT de alguna manera
-    // const decodedToken = jwt_decode(token);
-    console.log("Token: ",token);
-    // const roles = decodedToken.;
   
-    // Verificar si el rol de "administrador" está presente en los roles
-    // return roles.includes('administrador');
-    return true;
   }
 
   loadMovieList(){
@@ -75,8 +63,7 @@ export class MovieListComponent {
     };
     console.log(newMovie);
 
-    // this.apiservices.NewMovie(newMovie).subscribe( movie => {console.log(movie); this.router2.navigate(['/'])});
-    // window.location.reload();
+    this.apiservices.NewMovie(newMovie).subscribe( movie => {console.log(movie); this.router2.navigate(['/'])});
     this.reloadCurrentRoute();
   }
 
@@ -85,12 +72,4 @@ export class MovieListComponent {
       this.router2.navigate([this.router.url]);
     });
   }
-  // public config: PaginationInstance = {
-  //   itemsPerPage: 10,
-  //   currentPage: 1
-  // };
 }
-function jwt_decode(token: any) {
-  throw new Error('Function not implemented.');
-}
-

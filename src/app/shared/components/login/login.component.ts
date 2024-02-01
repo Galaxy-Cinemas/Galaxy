@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy{
 
 const url2= 'https://apim-galaxi.azure-api.net/Identity/v1/identity/authentication';
 
-    const url = environment.api + 'v1/identity/authentication';
+    const url = environment.apim + 'v1/identity/authentication';
     this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
              .subscribe(res => {
               const token = res.body?.response;
